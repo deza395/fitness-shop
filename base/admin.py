@@ -7,10 +7,12 @@ from import_export.admin import ImportExportModelAdmin
 class ProductResource(resources.ModelResource):
     class Meta:
         model = Product
+        
+        import_id_fields=('_id',)
 
 class ProductAdmin( ImportExportModelAdmin ,admin.ModelAdmin):
-    search_fields = ['name'] 
-    list_display=('user','name','image','brand','category','description','rating','numReviews', 'price', 'countInStock')
+    
+    list_display=('user','name','rating','numReviews', 'price')
     resource_class = ProductResource
 
 
